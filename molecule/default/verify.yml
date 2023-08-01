@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Check if connection still works
+      ansible.builtin.ping:
+
+    - name: Use mongosh
+      ansible.builtin.shell: mongosh --eval "db.version()"
+      register: mongosh_result
+      changed_when: no
+      failed_when: "'6.0.' not in mongosh_result.stdout"
