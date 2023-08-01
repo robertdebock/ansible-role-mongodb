@@ -30,9 +30,7 @@ jobs:
       matrix:
         config:
           - image: "debian"
-            tag: "latest"
-          - image: "debian"
-            tag: "bookworm"
+            tag: "bullseye"
           - image: "enterpriselinux"
             tag: "7"
           - image: "enterpriselinux"
