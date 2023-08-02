@@ -20,18 +20,10 @@ galaxy_info:
 
   galaxy_tags:
     - mongodb
-    - application
-    - cloud
     - database
-    - development
-    - infrastructure
     - linux
-    - monitoring
-    - networking
     - storage
-    - security
     - system
     - tools
-    - windows
 
 dependencies: []
