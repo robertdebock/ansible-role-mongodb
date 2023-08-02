@@ -45,7 +45,9 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 ---
 # defaults file for mongodb
 
-mongodb_dbpath: /var/lib/mongodb
+# You can overwrite the mongodb_dbpath, which is determined in `vars/main.yml`.
+# When you overwrite this value, please ensure the directory exists and has the correct permissions and ownership.
+mongodb_dbpath: "{{ mongodb_default_dbpath }}"
 mongodb_systemlog_path: /var/log/mongodb/mongod.log
 mongodb_port: 27017
 mongodb_bindip: "127.0.0.1"
