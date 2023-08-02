@@ -47,9 +47,9 @@
     group: root
     mode: "0644"
   notify:
-    - Restart mongodb
+    - Restart mongod
 
-- name: Start mongodb
+- name: Start mongod
   ansible.builtin.service:
     name: mongod
     state: started
