@@ -9,4 +9,4 @@ mongodb_apt_repository: "{{ _mongodb_apt_repository[ansible_distribution] }}"
 _mongodb_default_dbpath:
   default: /var/lib/mongo
   Debian: /var/lib/mongodb
-mongodb_default_dbpath: "{{ _mongodb_default_dbpath[ansible_distribution] | default(_mongodb_default_dbpath['default']) }}"
+mongodb_default_dbpath: "{{ _mongodb_default_dbpath[ansible_os_family] | default(_mongodb_default_dbpath['default']) }}"
