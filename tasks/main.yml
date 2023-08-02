@@ -39,6 +39,16 @@
   ansible.builtin.package:
     name: mongodb-org
 
+- name: Configure mongodb
+  ansible.builtin.template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Restart mongodb
+
 - name: Start mongodb
   ansible.builtin.service:
     name: mongod

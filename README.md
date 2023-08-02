@@ -44,6 +44,11 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 ```yaml
 ---
 # defaults file for mongodb
+
+mongodb_dbpath: /var/lib/mongodb
+mongodb_systemlog_path: /var/log/mongodb/mongod.log
+mongodb_port: 27017
+mongodb_bindip: "127.0.0.1"
 ```
 
 ## [Requirements](#requirements)
