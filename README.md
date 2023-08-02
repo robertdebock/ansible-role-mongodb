@@ -77,7 +77,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Debian](https://hub.docker.com/repository/docker/robertdebock/debian/general)|all|
+|[Debian](https://hub.docker.com/repository/docker/robertdebock/debian/general)|bullseye|
 |[EL](https://hub.docker.com/repository/docker/robertdebock/enterpriselinux/general)|all|
 |[Ubuntu](https://hub.docker.com/repository/docker/robertdebock/ubuntu/general)|all|
 
