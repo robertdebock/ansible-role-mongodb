@@ -1,4 +1,4 @@
-# Ansible role [mongodb](#mongodb)
+# [Ansible role mongodb](#mongodb)
 
 Install and configure mongodb on your system.
 
