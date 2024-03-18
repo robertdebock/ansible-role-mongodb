@@ -1,8 +1,8 @@
 ---
 - name: Verify
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   tasks:
     - name: Check if connection still works
@@ -11,5 +11,5 @@
     - name: Use mongosh
       ansible.builtin.shell: mongosh --eval "db.version()"
       register: mongosh_result
-      changed_when: no
+      changed_when: false
       failed_when: "'6.0.' not in mongosh_result.stdout"
