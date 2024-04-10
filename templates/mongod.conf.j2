@@ -11,6 +11,26 @@ systemLog:
 net:
   port: {{ mongodb_port }}
   bindIp: {{ mongodb_bindip }}
+{% if mongodb_tls_certificateKeyFile is defined or mongodb_tls_certificateSelector is defined %}
+  tls:
+{% if mongodb_tls_certificateKeyFile is defined %}
+    certificateKeyFile: {{ mongodb_tls_certificateKeyFile }}
+{% endif %}
+{% if mongodb_tls_certificateSelector is defined %}
+    certificateSelector: {{ mongodb_tls_certificateSelector }}
+{% endif %}
+{% if mongodb_tls_clusterCertificateSelector is defined %}
+    clusterCertificateSelector: {{ mongodb_tls_clusterCertificateSelector }}
+{% endif %}
+    mode: {{ mongodb_tls_mode|default('requireTLS') }}
+{% if mongodb_tls_certificateKeyFilePassword is defined %}
+    certificateKeyFilePassword: {{ mongodb_tls_certificateKeyFilePassword }}
+{% endif %}
+{% if mongodb_tls_CAFile is defined %}
+    CAFile: {{ mongodb_tls_CAFile }}
+{% endif %}
+    disabledProtocols: {{ mongodb_tls_disabledProtocols|default(['TLS1_0', 'TLS1_1', 'TLS1_2'])|join(',') }}
+{% endif %}
 
 processManagement:
   timeZoneInfo: /usr/share/zoneinfo
