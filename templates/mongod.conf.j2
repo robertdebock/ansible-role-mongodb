@@ -13,6 +13,7 @@ net:
   bindIp: {{ mongodb_bindip }}
 {% if mongodb_tls_certificateKeyFile is defined or mongodb_tls_certificateSelector is defined %}
   tls:
+    allowConnectionsWithoutCertificates: {{ mongodb_tls_allowConnectionsWithoutCertificates|default(true)|bool|ternary("true", "false") }}
 {% if mongodb_tls_certificateKeyFile is defined %}
     certificateKeyFile: {{ mongodb_tls_certificateKeyFile }}
 {% endif %}
@@ -22,7 +23,7 @@ net:
 {% if mongodb_tls_clusterCertificateSelector is defined %}
     clusterCertificateSelector: {{ mongodb_tls_clusterCertificateSelector }}
 {% endif %}
-    mode: {{ mongodb_tls_mode|default('requireTLS') }}
+    mode: {{ mongodb_tls_mode|default('preferTLS') }}
 {% if mongodb_tls_certificateKeyFilePassword is defined %}
     certificateKeyFilePassword: {{ mongodb_tls_certificateKeyFilePassword }}
 {% endif %}
