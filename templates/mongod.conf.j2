@@ -11,6 +11,9 @@ systemLog:
 net:
   port: {{ mongodb_port }}
   bindIp: {{ mongodb_bindip }}
+{% if mongodb_maxIncomingConnections is defined %}
+  maxIncomingConnections: {{ mongodb_maxIncomingConnections }}
+{% endif %}
 {% if mongodb_tls_certificateKeyFile is defined or mongodb_tls_certificateSelector is defined %}
   tls:
     allowConnectionsWithoutCertificates: {{ mongodb_tls_allowConnectionsWithoutCertificates|default(true)|bool|ternary("true", "false") }}
@@ -32,6 +35,7 @@ net:
 {% endif %}
     disabledProtocols: {{ mongodb_tls_disabledProtocols|default(['TLS1_0', 'TLS1_1', 'TLS1_2'])|join(',') }}
 {% endif %}
+
 
 processManagement:
   timeZoneInfo: /usr/share/zoneinfo
