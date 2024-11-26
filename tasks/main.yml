@@ -50,6 +50,14 @@
   notify:
     - Restart mongod
 
+- name: Add service user 
+  ansible.builtin.user:
+    name: mongodb
+    groups: "{{ mongodb_service_user_groups }}"
+    append: true
+  notify:
+    - Restart mongod
+
 - name: Start mongod
   ansible.builtin.service:
     name: mongod
