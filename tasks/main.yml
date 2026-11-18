@@ -11,10 +11,10 @@
   when:
     - ansible_facts['pkg_mgr'] == "apt"
   block:
-    - name: Download server-6.0.asc
+    - name: Download the MongoDB signing key
       ansible.builtin.get_url:
-        url: "https://pgp.mongodb.com/server-6.0.asc"
-        dest: /usr/share/keyrings/mongodb-server-6.0.asc
+        url: "https://pgp.mongodb.com/server-{{ mongodb_version }}.asc"
+        dest: /usr/share/keyrings/mongodb-server-{{ mongodb_version }}.asc
         # validate_certs: false
         mode: "0644"
 
@@ -23,16 +23,16 @@
         repo: "{{ mongodb_apt_repository }}"
         update_cache: true
         # validate_certs: false
-        filename: mongodb-org-6.0.list
+        filename: mongodb-org-{{ mongodb_version }}.list
 
 - name: Install mongodb repository (rpm)
   ansible.builtin.yum_repository:
-    name: mongodb-org-6.0
+    name: mongodb-org-{{ mongodb_version }}
     description: MongoDB Repository
-    baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/6.0/x86_64/
+    baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/{{ mongodb_version }}/x86_64/
     gpgcheck: true
     enabled: true
-    gpgkey: https://www.mongodb.org/static/pgp/server-6.0.asc
+    gpgkey: https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc
   when:
     - ansible_facts['pkg_mgr'] in [ "dnf", "yum", "dnf5" ]
 

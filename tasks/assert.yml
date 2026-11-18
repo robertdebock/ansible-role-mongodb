@@ -1,5 +1,12 @@
 ---
 
+- name: assert | Test mongodb_version
+  ansible.builtin.assert:
+    that:
+      - mongodb_version is defined
+      - mongodb_version is string
+    quiet: true
+
 - name: assert | Test mongodb_dbpath
   ansible.builtin.assert:
     that:

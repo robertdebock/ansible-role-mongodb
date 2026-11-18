@@ -12,4 +12,4 @@
       ansible.builtin.shell: mongosh --eval "db.version()"
       register: mongosh_result
       changed_when: false
-      failed_when: "'6.0.' not in mongosh_result.stdout"
+      failed_when: "(mongodb_version ~ '.') not in mongosh_result.stdout"
