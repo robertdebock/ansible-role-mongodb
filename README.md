@@ -45,6 +45,9 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 ---
 # defaults file for mongodb
 
+# The version of MongoDB to install, the repository must exist for your distribution.
+mongodb_version: "8.0"
+
 # You can overwrite the mongodb_dbpath, which is determined in `vars/main.yml`.
 # When you overwrite this value, please ensure the directory exists and has the correct permissions and ownership.
 mongodb_dbpath: "{{ mongodb_default_dbpath }}"
@@ -79,7 +82,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
+|[Debian](https://hub.docker.com/r/robertdebock/debian)|bookworm|
 |[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
 
