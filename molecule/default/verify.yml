@@ -4,6 +4,9 @@
   become: true
   gather_facts: true
 
+  vars:
+    mongodb_expected_version: "8.0"
+
   tasks:
     - name: Check if connection still works
       ansible.builtin.ping:
@@ -12,4 +15,4 @@
       ansible.builtin.shell: mongosh --eval "db.version()"
       register: mongosh_result
       changed_when: false
-      failed_when: "(mongodb_version ~ '.') not in mongosh_result.stdout"
+      failed_when: "(mongodb_expected_version ~ '.') not in mongosh_result.stdout"
